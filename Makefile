@@ -9,7 +9,7 @@ OBJ_RULES = text_utilities.o Settings.o Game.o Bird.o Log.o LogPair.o World.o St
 LIBS = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system $(BUILD_DIR)/*.o
 
 main: $(BUILD_DIR) $(OBJ_RULES) main.cpp
-	$(CXX) $(INCLUDE) $@.cpp -o $@ $(LIBS)
+	$(CXX) $(INCLUDE) $@.cpp -o $@.out $(LIBS)
 
 Settings.o: $(BUILD_DIR) Settings.hpp Settings.cpp
 	$(CXX) -c $(INCLUDE) Settings.cpp -o $(BUILD_DIR)/$@
@@ -50,4 +50,4 @@ $(BUILD_DIR):
 
 .PHONY:
 clean:
-	$(RM) $(BUILD_DIR)/*.o main
+	$(RM) $(BUILD_DIR)/*.o main.out

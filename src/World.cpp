@@ -100,7 +100,6 @@ void World::update(float dt) noexcept
             auto log_pair = *it;
             log_factory.remove(log_pair);
             it = logs.erase(it);
-            
         }
         else
         {

@@ -26,8 +26,8 @@ struct Settings
     static const fs::path SOUNDS_PATH;
     static const fs::path FONTS_PATH;
 
-    static constexpr int WINDOW_WIDTH{1280};
-    static constexpr int WINDOW_HEIGHT{720};
+    static constexpr int WINDOW_WIDTH{1024};
+    static constexpr int WINDOW_HEIGHT{580};
     static constexpr int VIRTUAL_WIDTH{512};
     static constexpr int VIRTUAL_HEIGHT{288};
     static constexpr float BIRD_WIDTH{39.f};
