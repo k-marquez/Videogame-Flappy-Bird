@@ -45,6 +45,7 @@ void PlayingState::handle_inputs(const sf::Event& event) noexcept
     }
     else if (event.key.code == sf::Keyboard::Space)
     {
+        Settings::music.pause();
         Settings::sounds["pause"].play();
         state_machine->change_state("pause", world, bird);
     }

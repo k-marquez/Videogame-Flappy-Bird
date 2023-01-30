@@ -23,7 +23,7 @@ public:
     using StateBuilder = std::function<std::shared_ptr<BaseState>(StateMachine*)>;
 
     StateMachine(const std::initializer_list<std::pair<std::string, StateBuilder>>& init_states = {}) noexcept;
-
+    
     void change_state(const std::string& state_name, std::shared_ptr<World> world = nullptr, std::shared_ptr<Bird> bird = nullptr) noexcept;
 
     void handle_inputs(const sf::Event& event) noexcept;

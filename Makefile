@@ -8,6 +8,8 @@ OBJ_RULES = text_utilities.o Settings.o Game.o Bird.o Log.o LogPair.o World.o St
 
 LIBS = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system $(BUILD_DIR)/*.o
 
+all: main
+
 main: $(BUILD_DIR) $(OBJ_RULES) main.cpp
 	$(CXX) $(INCLUDE) $@.cpp -o $@.out $(LIBS)
 
