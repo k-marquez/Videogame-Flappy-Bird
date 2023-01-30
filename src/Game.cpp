@@ -5,6 +5,9 @@
     Author: Alejandro Mujica
     alejandro.j.mujic4@gmail.com
 
+    Author: Kevin Márquez
+    marquezberriosk@gmail.com
+
     This file contains the definition of the class Game.
 */
 
@@ -12,6 +15,7 @@
 #include <src/Game.hpp>
 #include <src/states/CountDownState.hpp>
 #include <src/states/TitleScreenState.hpp>
+#include <src/states/PauseState.hpp>
 #include <src/states/PlayingState.hpp>
 
 Game::Game()
@@ -21,7 +25,8 @@ Game::Game()
       state_machine{
         {"title", [](StateMachine* sm) { return std::make_shared<TitleScreenState>(sm); }},
         {"count_down", [](StateMachine* sm) { return std::make_shared<CountDownState>(sm); }},
-        {"playing", [](StateMachine* sm) { return std::make_shared<PlayingState>(sm); }}
+        {"playing", [](StateMachine* sm) { return std::make_shared<PlayingState>(sm); }},
+        {"pause", [](StateMachine* sm) { return std::make_shared<PauseState>(sm); }}
       }
 {
     render_texture.create(Settings::VIRTUAL_WIDTH, Settings::VIRTUAL_HEIGHT);

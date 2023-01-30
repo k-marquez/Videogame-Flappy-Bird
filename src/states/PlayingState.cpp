@@ -43,6 +43,12 @@ void PlayingState::handle_inputs(const sf::Event& event) noexcept
     {
         bird->jump();
     }
+    else if (event.key.code == sf::Keyboard::Space)
+    {
+        //Exit sound needed
+        //Settings::sounds["pause"].play();
+        state_machine->change_state("pause", world, bird);
+    }
 }
 
 void PlayingState::update(float dt) noexcept
