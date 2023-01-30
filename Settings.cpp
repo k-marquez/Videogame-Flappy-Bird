@@ -112,6 +112,16 @@ void Settings::load_sounds()
 
     sound.setBuffer(result.first->second);
     Settings::sounds["score"] = sound;
+    
+    if (!buffer.loadFromFile(Settings::SOUNDS_PATH / "pause.wav"))
+    {
+        throw std::runtime_error{"Error loading sound sounds/pause.wav"};
+    }
+
+    result = Settings::sound_buffers.emplace("pause", buffer);
+
+    sound.setBuffer(result.first->second);
+    Settings::sounds["pause"] = sound;
 
     if (!Settings::music.openFromFile(Settings::SOUNDS_PATH / "marios_way.ogg"))
     {
