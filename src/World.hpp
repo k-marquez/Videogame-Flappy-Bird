@@ -5,6 +5,9 @@
     Author: Alejandro Mujica
     alejandro.j.mujic4@gmail.com
 
+    Author: Lewis Ochoa
+    lewis8a@gmail.com
+
     This file contains the declaration of the class World.
 */
 
@@ -37,6 +40,10 @@ public:
     void update(float dt) noexcept;
 
     void render(sf::RenderTarget& target) const noexcept;
+
+    void increase_score() noexcept;
+
+    int get_score() const noexcept;
 private:
     bool generate_logs;
 
@@ -54,4 +61,6 @@ private:
 
     float logs_spawn_timer{0.f};
     float last_log_y{0.f};
+
+    int score{0};
 };

@@ -68,7 +68,7 @@ void PlayingState::update(float dt) noexcept
 
     if (world->update_scored(bird->get_collision_rect()))
     {
-        ++score;
+        world->increase_score();
         Settings::sounds["score"].play();
     }
 }
@@ -77,6 +77,6 @@ void PlayingState::render(sf::RenderTarget& target) const noexcept
 {
     world->render(target);
     bird->render(target);
-    render_text(target, 20, 10, "Score: " + std::to_string(score), Settings::FLAPPY_TEXT_SIZE, "flappy", sf::Color::White);
+    render_text(target, 20, 10, "Score: " + std::to_string(world->get_score()), Settings::FLAPPY_TEXT_SIZE, "flappy", sf::Color::White);
     render_text(target, Settings::VIRTUAL_WIDTH - Settings::VIRTUAL_WIDTH / 3, 10, "Press Space to Pause", Settings::LOW_TEXT_SIZE, "font", sf::Color::White, false);
 }

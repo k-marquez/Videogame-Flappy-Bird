@@ -5,6 +5,9 @@
     Author: Alejandro Mujica
     alejandro.j.mujic4@gmail.com
 
+    Author: Lewis Ochoa
+    lewis8a@gmail.com
+
     This file contains the declaration of the class Game.
 */
 
@@ -40,5 +43,4 @@ private:
     StateMachine state_machine;
 
     bool bird_is_dead{false};
-    int score{0};
 };

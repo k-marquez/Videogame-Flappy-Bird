@@ -5,6 +5,9 @@
     Author: Alejandro Mujica
     alejandro.j.mujic4@gmail.com
 
+    Author: Lewis Ochoa
+    lewis8a@gmail.com
+
     This file contains the definition of the class World.
 */
 
@@ -119,4 +122,14 @@ void World::render(sf::RenderTarget& target) const noexcept
     }
 
     target.draw(ground);
+}
+
+void World::increase_score() noexcept
+{
+    score++;
+}
+
+int World::get_score() const noexcept
+{
+    return score;
 }
