@@ -5,6 +5,9 @@
     Author: Kevin Márquez
     marquezberriosk@gmail.com
 
+    Author: Lewis Ochoa
+    lewis8a@gmail.com
+
     This file contains the definition of the class PauseBaseState.
 */
 #include <Settings.hpp>
@@ -33,9 +36,6 @@ void PauseState::handle_inputs(const sf::Event& event) noexcept
     {
         Settings::sounds["pause"].play();
         state_machine->change_state("playing", world, bird);
-        
-        for(int i = 0; i < 255; i++);
-        
         Settings::music.play();
     }
 }
@@ -48,4 +48,5 @@ void PauseState::render(sf::RenderTarget& target) const noexcept
     target.draw(curtain);
     
     render_text(target, Settings::VIRTUAL_WIDTH / 2, Settings::VIRTUAL_HEIGHT / 3, "PAUSE", Settings::HUGE_TEXT_SIZE, "flappy", sf::Color::White, true);
+    render_text(target, Settings::VIRTUAL_WIDTH / 2, 2 * Settings::VIRTUAL_HEIGHT / 3, "Press Space to resume", Settings::MEDIUM_TEXT_SIZE, "font", sf::Color::White, true);
 }

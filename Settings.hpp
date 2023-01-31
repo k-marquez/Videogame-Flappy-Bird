@@ -5,6 +5,9 @@
     Author: Alejandro Mujica
     alejandro.j.mujic4@gmail.com
 
+    Author: Lewis Ochoa
+    lewis8a@gmail.com
+
     This file contains the declaration of Settings that contains constants
     to set up the game and methods to load multimedia files.
 */
@@ -42,6 +45,7 @@ struct Settings
     static constexpr float GRAVITY{980.f};
     static constexpr float JUMP_TAKEOFF_SPEED{GRAVITY / 6.f};
     static constexpr float TIME_TO_SPAWN_LOGS{1.5f};
+    static constexpr int LOW_TEXT_SIZE{14};
     static constexpr int MEDIUM_TEXT_SIZE{18};
     static constexpr int HUGE_TEXT_SIZE{56};
     static constexpr int FLAPPY_TEXT_SIZE{28};

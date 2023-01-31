@@ -5,6 +5,9 @@
     Author: Kevin Márquez
     marquezberriosk@gmail.com
 
+        Author: Lewis Ochoa
+    lewis8a@gmail.com
+
     This file contains the declaration of the class PauseBaseState.
 */
 
