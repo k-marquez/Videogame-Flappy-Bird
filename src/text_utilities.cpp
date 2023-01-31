@@ -31,7 +31,7 @@ void render_text(sf::RenderTarget& target, float x, float y, const std::string& 
     text.setString(text_str);
     text.setCharacterSize(size);
     text.setFillColor(sf::Color::Black);
-    text.move(x + 2, y + 2);
+    text.move(x + 1, y + 1);
     if (center)
     {
         center_text(text);

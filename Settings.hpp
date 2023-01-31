@@ -43,6 +43,7 @@ struct Settings
     static constexpr float MAIN_SCROLL_SPEED{100.f};
     static constexpr float BACK_SCROLL_SPEED{50.f}; // MAIN_SCROLL_SPEED / 2
     static constexpr float GRAVITY{980.f};
+    static constexpr float HORIZONTAL_SPEED{1000.f};
     static constexpr float JUMP_TAKEOFF_SPEED{GRAVITY / 6.f};
     static constexpr float TIME_TO_SPAWN_LOGS{1.5f};
     static constexpr int LOW_TEXT_SIZE{14};

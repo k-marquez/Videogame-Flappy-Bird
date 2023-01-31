@@ -5,6 +5,9 @@
     Author: Alejandro Mujica
     alejandro.j.mujic4@gmail.com
 
+    Author: Kevin Márquez
+    marquezberriosk@gmail.com
+    
     Author: Lewis Ochoa
     lewis8a@gmail.com
 
@@ -12,9 +15,11 @@
 */
 
 #include <Settings.hpp>
-#include <src/text_utilities.hpp>
+#include <src/HandleInputsBirdHard.hpp>
+#include <src/HandleInputsBirdRegular.hpp>
 #include <src/states/StateMachine.hpp>
 #include <src/states/PlayingState.hpp>
+#include <src/text_utilities.hpp>
 
 PlayingState::PlayingState(StateMachine* sm) noexcept
     : BaseState{sm}
@@ -38,15 +43,18 @@ void PlayingState::enter(std::shared_ptr<World> _world, std::shared_ptr<Bird> _b
     {
         bird = _bird;
     }
+    
+    bird_mode = "normal";
+    bird_handler.insert({
+        {"normal",std::make_shared<HandleInputBirdRegular>()},
+        {"hard",std::make_shared<HandleInputBirdHard>()}});
 }
 
 void PlayingState::handle_inputs(const sf::Event& event) noexcept
 {
-    if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
-    {
-        bird->jump();
-    }
-    else if (event.key.code == sf::Keyboard::Space)
+    bird_handler[bird_mode]->handle_inputs(event, bird);
+    
+    if (event.key.code == sf::Keyboard::Space)
     {
         Settings::music.pause();
         Settings::sounds["pause"].play();
