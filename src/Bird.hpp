@@ -32,6 +32,8 @@ public:
     void update(float dt) noexcept;
 
     void render(sf::RenderTarget& target) const noexcept;
+    
+    void reset() noexcept;
 
 private:
     float x;

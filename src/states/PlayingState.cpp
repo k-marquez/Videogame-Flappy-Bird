@@ -44,7 +44,6 @@ void PlayingState::enter(std::shared_ptr<World> _world, std::shared_ptr<Bird> _b
         bird = _bird;
     }
     
-    bird_mode = "normal";
     bird_handler.insert({
         {"normal",std::make_shared<HandleInputBirdRegular>()},
         {"hard",std::make_shared<HandleInputBirdHard>()}});
@@ -52,7 +51,8 @@ void PlayingState::enter(std::shared_ptr<World> _world, std::shared_ptr<Bird> _b
 
 void PlayingState::handle_inputs(const sf::Event& event) noexcept
 {
-    bird_handler[bird_mode]->handle_inputs(event, bird);
+    std::string game_mode = state_machine->get_game_mode(); 
+    bird_handler[game_mode]->handle_inputs(event, bird);
     
     if (event.key.code == sf::Keyboard::Space)
     {
@@ -71,6 +71,7 @@ void PlayingState::update(float dt) noexcept
     {
         Settings::sounds["explosion"].play();
         Settings::sounds["hurt"].play();
+        bird->reset();
         state_machine->change_state("count_down");
     }
 

@@ -85,3 +85,9 @@ void Bird::render(sf::RenderTarget& target) const noexcept
 {
     target.draw(sprite);
 }
+
+void Bird::reset() noexcept
+{
+    vx = 0.f;
+    stop_time = 0.f;
+}

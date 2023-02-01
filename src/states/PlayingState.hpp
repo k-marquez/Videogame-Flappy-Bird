@@ -38,7 +38,5 @@ private:
     std::shared_ptr<Bird> bird;
     std::shared_ptr<World> world;
     
-    std::string bird_mode;
-    
     std::unordered_map<std::string, std::shared_ptr<HandleInputBirdBase>> bird_handler;
 };
