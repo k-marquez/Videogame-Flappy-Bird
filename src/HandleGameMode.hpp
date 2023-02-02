@@ -8,7 +8,7 @@
     Author: Lewis Ochoa
     lewis8a@gmail.com
 
-    This file contains the declaration of the class HandleInputBirdBase.
+    This file contains the declaration of the class HandleGameModeBase.
 */
 
 #pragma once
@@ -16,12 +16,12 @@
 #include <Settings.hpp>
 #include <src/Bird.hpp>
 
-class HandleInputBirdBase
+class HandleGameModeBase
 {
 public:
-    HandleInputBirdBase() {}
+    HandleGameModeBase() {}
 
-    virtual ~HandleInputBirdBase() {}
+    virtual ~HandleGameModeBase() {}
 
     virtual void handle_inputs(const sf::Event& event, std::shared_ptr<Bird> bird) noexcept {}
 };

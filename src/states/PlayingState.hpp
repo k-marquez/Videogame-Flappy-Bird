@@ -16,7 +16,7 @@
 #include <unordered_map>
 
 #include <src/Bird.hpp>
-#include <src/HandleInputsBird.hpp>
+#include <src/HandleGameMode.hpp>
 #include <src/World.hpp>
 #include <src/states/BaseState.hpp>
 
@@ -38,5 +38,5 @@ private:
     std::shared_ptr<Bird> bird;
     std::shared_ptr<World> world;
     
-    std::unordered_map<std::string, std::shared_ptr<HandleInputBirdBase>> bird_handler;
+    std::unordered_map<std::string, std::shared_ptr<HandleGameModeBase>> bird_handler;
 };

@@ -31,11 +31,11 @@ Log.o: $(BUILD_DIR) src/Log.hpp src/Log.cpp
 LogPair.o: $(BUILD_DIR) src/LogPair.hpp src/LogPair.cpp
 	$(CXX) -c $(INCLUDE) src/LogPair.cpp -o $(BUILD_DIR)/$@
 
-HandlerHard.o: $(BUILD_DIR) src/HandleInputsBirdHard.hpp src/HandleInputsBirdHard.cpp
-	$(CXX) -c $(INCLUDE) src/HandleInputsBirdHard.cpp -o $(BUILD_DIR)/$@
+HandlerHard.o: $(BUILD_DIR) src/HandleGameModeHard.hpp src/HandleGameModeHard.cpp
+	$(CXX) -c $(INCLUDE) src/HandleGameModeHard.cpp -o $(BUILD_DIR)/$@
 	
-HandlerRegular.o: $(BUILD_DIR) src/HandleInputsBirdRegular.hpp src/HandleInputsBirdRegular.cpp
-	$(CXX) -c $(INCLUDE) src/HandleInputsBirdRegular.cpp -o $(BUILD_DIR)/$@
+HandlerRegular.o: $(BUILD_DIR) src/HandleGameModeRegular.hpp src/HandleGameModeRegular.cpp
+	$(CXX) -c $(INCLUDE) src/HandleGameModeRegular.cpp -o $(BUILD_DIR)/$@
 
 World.o: $(BUILD_DIR) src/World.hpp src/World.cpp
 	$(CXX) -c $(INCLUDE) src/World.cpp -o $(BUILD_DIR)/$@

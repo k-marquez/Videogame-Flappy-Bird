@@ -8,17 +8,17 @@
     Author: Lewis Ochoa
     lewis8a@gmail.com
 
-    This file contains the definition of the class HandleInputBirdRegular.
+    This file contains the definition of the class HandleGameModeRegular.
 */
 
-#include <src/HandleInputsBirdRegular.hpp>
+#include <src/HandleGameModeRegular.hpp>
 
-HandleInputBirdRegular::HandleInputBirdRegular() noexcept
+HandleGameModeRegular::HandleGameModeRegular() noexcept
 {
 
 }
 
-void HandleInputBirdRegular::handle_inputs(const sf::Event& event, std::shared_ptr<Bird> bird) noexcept
+void HandleGameModeRegular::handle_inputs(const sf::Event& event, std::shared_ptr<Bird> bird) noexcept
 {
     if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
     {

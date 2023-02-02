@@ -8,7 +8,7 @@
     Author: Lewis Ochoa
     lewis8a@gmail.com
 
-    This file contains the declaration of the class HandleInputBirdRegular
+    This file contains the declaration of the class HandleGameModeRegular
 */
 
 #pragma once
@@ -16,13 +16,13 @@
 #include <SFML/Graphics.hpp>
 
 #include <src/Bird.hpp>
-#include <src/HandleInputsBird.hpp>
+#include <src/HandleGameMode.hpp>
 
-class HandleInputBirdRegular: public HandleInputBirdBase
+class HandleGameModeRegular: public HandleGameModeBase
 {
 
 public:
-    HandleInputBirdRegular() noexcept;
+    HandleGameModeRegular() noexcept;
 
     void handle_inputs(const sf::Event& event, std::shared_ptr<Bird> bird) noexcept override;
 };

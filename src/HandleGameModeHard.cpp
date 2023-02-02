@@ -8,17 +8,17 @@
     Author: Lewis Ochoa
     lewis8a@gmail.com
 
-    This file contains the definition of the class HandleInputBirdHard.
+    This file contains the definition of the class HandleGameModeHard.
 */
 
-#include <src/HandleInputsBirdHard.hpp>
+#include <src/HandleGameModeHard.hpp>
 
-HandleInputBirdHard::HandleInputBirdHard() noexcept
+HandleGameModeHard::HandleGameModeHard() noexcept
 {
 
 }
 
-void HandleInputBirdHard::handle_inputs(const sf::Event& event, std::shared_ptr<Bird> bird) noexcept
+void HandleGameModeHard::handle_inputs(const sf::Event& event, std::shared_ptr<Bird> bird) noexcept
 {
     if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
     {

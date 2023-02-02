@@ -15,8 +15,8 @@
 */
 
 #include <Settings.hpp>
-#include <src/HandleInputsBirdHard.hpp>
-#include <src/HandleInputsBirdRegular.hpp>
+#include <src/HandleGameModeHard.hpp>
+#include <src/HandleGameModeRegular.hpp>
 #include <src/states/StateMachine.hpp>
 #include <src/states/PlayingState.hpp>
 #include <src/text_utilities.hpp>
@@ -45,8 +45,8 @@ void PlayingState::enter(std::shared_ptr<World> _world, std::shared_ptr<Bird> _b
     }
     
     bird_handler.insert({
-        {"normal",std::make_shared<HandleInputBirdRegular>()},
-        {"hard",std::make_shared<HandleInputBirdHard>()}});
+        {"normal",std::make_shared<HandleGameModeRegular>()},
+        {"hard",std::make_shared<HandleGameModeHard>()}});
 }
 
 void PlayingState::handle_inputs(const sf::Event& event) noexcept
