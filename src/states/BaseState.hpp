@@ -13,6 +13,8 @@
 #include <memory>
 
 #include <SFML/Graphics.hpp>
+#include <src/HandleGameMode.hpp>
+
 
 class StateMachine;
 class World;
@@ -25,7 +27,7 @@ public:
 
     virtual ~BaseState() {}
 
-    virtual void enter(std::shared_ptr<World> world, std::shared_ptr<Bird> bird) noexcept {}
+    virtual void enter(std::shared_ptr<World> world, std::shared_ptr<Bird> bird, std::shared_ptr<HandleGameModeBase> _handler) noexcept {}
 
     virtual void exit() noexcept {}
 

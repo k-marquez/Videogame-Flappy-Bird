@@ -10,6 +10,7 @@
 
 #pragma once
 
+#include <src/HandleGameMode.hpp>
 #include <src/World.hpp>
 #include <src/states/BaseState.hpp>
 
@@ -18,7 +19,7 @@ class CountDownState: public BaseState
 public:
     CountDownState(StateMachine* sm) noexcept;
 
-    void enter(std::shared_ptr<World> _world = nullptr, std::shared_ptr<Bird> _bird = nullptr) noexcept override;
+    void enter(std::shared_ptr<World> _world = nullptr, std::shared_ptr<Bird> _bird = nullptr, std::shared_ptr<HandleGameModeBase> _handler = nullptr) noexcept override;
 
     void update(float dt) noexcept override;
 
@@ -26,6 +27,8 @@ public:
 
 private:
     std::shared_ptr<World> world;
+    
+    std::shared_ptr<HandleGameModeBase> handler_game_mode;
     
     int counter{3};
     float timer{0.f};

@@ -14,6 +14,7 @@
 #include <src/HandleGameModeRegular.hpp>
 
 HandleGameModeRegular::HandleGameModeRegular() noexcept
+    : HandleGameModeBase()
 {
 
 }

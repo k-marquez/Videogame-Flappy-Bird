@@ -16,18 +16,16 @@
 #include <src/states/PauseState.hpp>
 
 PauseState::PauseState(StateMachine* sm) noexcept
-    : BaseState{sm}
+    : BaseState{sm}, curtain{sf::RectangleShape(sf::Vector2f(Settings::VIRTUAL_WIDTH, Settings::VIRTUAL_HEIGHT))}
 {
-
+    curtain.setFillColor(sf::Color(255, 255, 255, 100));
 }
 
-void PauseState::enter(std::shared_ptr<World> _world, std::shared_ptr<Bird> _bird) noexcept
+void PauseState::enter(std::shared_ptr<World> _world, std::shared_ptr<Bird> _bird, std::shared_ptr<HandleGameModeBase> _handler) noexcept
 {
     world = _world;    
     bird = _bird;
-    
-    curtain = sf::RectangleShape(sf::Vector2f(Settings::VIRTUAL_WIDTH, Settings::VIRTUAL_HEIGHT));
-    curtain.setFillColor(sf::Color(255, 255, 255, 100));
+    handler = _handler;
 }
 
 void PauseState::handle_inputs(const sf::Event& event) noexcept
@@ -35,7 +33,7 @@ void PauseState::handle_inputs(const sf::Event& event) noexcept
     if (event.key.code == sf::Keyboard::Space)
     {
         Settings::sounds["pause"].play();
-        state_machine->change_state("playing", world, bird);
+        state_machine->change_state("playing", world, bird, handler);
         Settings::music.play();
     }
 }

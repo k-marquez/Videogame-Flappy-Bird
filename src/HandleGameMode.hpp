@@ -15,6 +15,7 @@
 
 #include <Settings.hpp>
 #include <src/Bird.hpp>
+#include <src/World.hpp>
 
 class HandleGameModeBase
 {

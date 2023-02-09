@@ -25,7 +25,7 @@ class PauseState: public BaseState
 public:
     PauseState(StateMachine* sm) noexcept;
 
-    void enter(std::shared_ptr<World> _world = nullptr, std::shared_ptr<Bird> _bird = nullptr) noexcept override;
+    void enter(std::shared_ptr<World> _world = nullptr, std::shared_ptr<Bird> _bird = nullptr, std::shared_ptr<HandleGameModeBase> _handler = nullptr) noexcept override;
 
     void handle_inputs(const sf::Event& event) noexcept override;
 
@@ -36,4 +36,5 @@ private:
     std::shared_ptr<World> world;
     
     sf::RectangleShape curtain;
+    std::shared_ptr<HandleGameModeBase> handler;
 };

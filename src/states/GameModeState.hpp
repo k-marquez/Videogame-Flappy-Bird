@@ -10,6 +10,8 @@
 
 #pragma once
 
+#include <unordered_map>
+
 #include <src/World.hpp>
 #include <src/states/BaseState.hpp>
 
@@ -29,4 +31,7 @@ private:
     
     sf::Color opt1;
     sf::Color opt2;
+    
+    std::string select;
+    std::unordered_map<std::string, std::shared_ptr<HandleGameModeBase>> handlers;
 };

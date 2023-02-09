@@ -9,6 +9,8 @@
 */
 
 #include <Settings.hpp>
+#include <src/HandleGameModeHard.hpp>
+#include <src/HandleGameModeRegular.hpp>
 #include <src/text_utilities.hpp>
 #include <src/states/CountDownState.hpp>
 #include <src/states/StateMachine.hpp>
@@ -19,8 +21,9 @@ CountDownState::CountDownState(StateMachine* sm) noexcept
 
 }
 
-void CountDownState::enter(std::shared_ptr<World> _world, std::shared_ptr<Bird> _bird) noexcept
+void CountDownState::enter(std::shared_ptr<World> _world, std::shared_ptr<Bird> _bird, std::shared_ptr<HandleGameModeBase> _handler) noexcept
 {
+    handler_game_mode = _handler;
     world = std::make_shared<World>(false);
 }
 
@@ -35,7 +38,7 @@ void CountDownState::update(float dt) noexcept
 
         if (counter == 0)
         {
-            state_machine->change_state("playing", world);
+            state_machine->change_state("playing", world, nullptr,handler_game_mode);
         }
     }
 

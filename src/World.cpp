@@ -13,6 +13,7 @@
 
     This file contains the definition of the clase World.
 */
+#include <iostream>
 
 #include <Settings.hpp>
 #include <src/World.hpp>
