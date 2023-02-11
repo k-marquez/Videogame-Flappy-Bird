@@ -29,8 +29,12 @@ World::World(bool _generate_logs) noexcept
 
 void World::reset(bool _generate_logs) noexcept
 {
-    score = 0;
     generate_logs = _generate_logs;
+}
+
+void World::resetScore() noexcept
+{
+    score = 0;
 }
 
 bool World::collides(const sf::FloatRect& rect) const noexcept
@@ -148,7 +152,7 @@ void World::set_level(int _level) noexcept
     if (_level == 1)
         level = 20;
     else if (_level == 2)
-        level = 80;
+        level = 70;
     else if (_level == 3)
         level = 100;
 }

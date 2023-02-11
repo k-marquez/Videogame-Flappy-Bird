@@ -31,6 +31,7 @@ void PlayingState::enter(std::shared_ptr<World> _world, std::shared_ptr<Bird> _b
 {
     world = _world;
     world->reset(true);
+    world->resetScore();
     handler = _handler;
     
     if (_bird == nullptr)
@@ -84,4 +85,8 @@ void PlayingState::render(sf::RenderTarget& target) const noexcept
     bird->render(target);
     render_text(target, 20, 10, "Score: " + std::to_string(world->get_score()), Settings::FLAPPY_TEXT_SIZE, "flappy", sf::Color::White);
     render_text(target, Settings::VIRTUAL_WIDTH - Settings::VIRTUAL_WIDTH / 3, 10, "Press Space to Pause", Settings::LOW_TEXT_SIZE, "font", sf::Color::White, false);
+    if(world->get_level() > 20)
+    {
+        render_text(target, Settings::VIRTUAL_WIDTH - Settings::VIRTUAL_WIDTH / 3, 25, "Press A or B to move", Settings::LOW_TEXT_SIZE, "font", sf::Color::White, false);
+    }
 }

@@ -22,7 +22,7 @@
 #include <src/text_utilities.hpp>
 
 GameModeState::GameModeState(StateMachine* sm) noexcept
-    : BaseState{sm}, opt1{sf::Color::Yellow}, opt2{sf::Color::White},
+    : BaseState{sm}, opt1{sf::Color::Yellow}, opt2{sf::Color::White}, opt3{sf::Color::White},
       handlers{{"regular",std::make_shared<HandleGameModeRegular>()},{"hard",std::make_shared<HandleGameModeHard>()}}, select{"regular"}
 {
 }
@@ -38,21 +38,32 @@ void GameModeState::handle_inputs(const sf::Event& event) noexcept
         Settings::sounds["select"].play();
         state_machine->change_state("count_down", world, nullptr, handlers[select]);
     }
-    else if (event.key.code == sf::Keyboard::Down && select != "hard")
-    {
-        Settings::sounds["change"].play();
-        opt1 = sf::Color::White;
-        opt2 = sf::Color::Yellow;
-        select = "hard";
-        world->set_level(2);
-    }
-    else if (event.key.code == sf::Keyboard::Up && select != "regular")
+    else if (event.key.code == sf::Keyboard::Up && select == "hard")
     {
         Settings::sounds["change"].play();
         opt1 = sf::Color::Yellow;
         opt2 = sf::Color::White;
+        opt3 = sf::Color::White;
         select = "regular";
         world->set_level(1);
+    }
+    else if (event.key.code == sf::Keyboard::Down && select == "regular" || event.key.code == sf::Keyboard::Up  && select == "super")
+    {
+        Settings::sounds["change"].play();
+        opt1 = sf::Color::White;
+        opt2 = sf::Color::Yellow;
+        opt3 = sf::Color::White;
+        select = "hard";
+        world->set_level(2);
+    }
+    else if (event.key.code == sf::Keyboard::Down && select == "hard")
+    {
+        Settings::sounds["change"].play();
+        opt1 = sf::Color::White;
+        opt2 = sf::Color::White;
+        opt3 = sf::Color::Yellow;
+        select = "hard";
+        world->set_level(3);
     }
 }
 
@@ -69,4 +80,5 @@ void GameModeState::render(sf::RenderTarget& target) const noexcept
     render_text(target, Settings::VIRTUAL_WIDTH / 2, 2.0 * Settings::VIRTUAL_HEIGHT / 3, "Press Enter to select", Settings::MEDIUM_TEXT_SIZE, "font", sf::Color::White, true);
     render_text(target, Settings::VIRTUAL_WIDTH / 2, 2.4 * Settings::VIRTUAL_HEIGHT / 3, "Regular", Settings::MEDIUM_TEXT_SIZE, "font", opt1, true);
     render_text(target, Settings::VIRTUAL_WIDTH / 2, 2.6 * Settings::VIRTUAL_HEIGHT / 3, "Hard", Settings::MEDIUM_TEXT_SIZE, "font", opt2, true);
+    render_text(target, Settings::VIRTUAL_WIDTH / 2, 2.8 * Settings::VIRTUAL_HEIGHT / 3, "Super Hard", Settings::MEDIUM_TEXT_SIZE, "font", opt3, true);
 }

@@ -36,6 +36,8 @@ public:
 
     void reset(bool _generate_logs) noexcept;
 
+    void resetScore() noexcept;
+
     bool collides(const sf::FloatRect& rect) const noexcept;
 
     bool update_scored(const sf::FloatRect& rect) noexcept;
