@@ -37,3 +37,12 @@ void HandleGameModeHard::handle_inputs(const sf::Event& event, std::shared_ptr<B
         bird->move_to_right();
     }
 }
+
+void HandleGameModeHard::config_world(std::shared_ptr<World> _world) noexcept
+{
+    _world->reset(true);
+    _world->resetScore();
+    
+    _world->set_level_limit(40);
+    _world->set_aditional_time_to_spwan(0.5f);    
+};

@@ -30,7 +30,7 @@ void TitleScreenState::handle_inputs(const sf::Event& event) noexcept
     if (event.key.code == sf::Keyboard::Enter)
     {
         Settings::sounds["select"].play();
-        state_machine->change_state("game_mode");
+        state_machine->change_state("game_mode", std::make_shared<World>());
     }
 }
 

@@ -20,11 +20,10 @@
 
 World::World(bool _generate_logs) noexcept
     : generate_logs{_generate_logs}, background{Settings::textures["background"]}, ground{Settings::textures["ground"]},
-      logs{}, rng{std::default_random_engine{}()}
+      logs{}, rng{std::default_random_engine{}()},
+      time_to_spawn{Settings::TIME_TO_SPAWN_LOGS}
 {
     ground.setPosition(0, Settings::VIRTUAL_HEIGHT - Settings::GROUND_HEIGHT);
-    std::uniform_int_distribution<int> dist(0, 80);
-    last_log_y = -Settings::LOG_HEIGHT + dist(rng) + 20;
 }
 
 void World::reset(bool _generate_logs) noexcept
@@ -73,11 +72,13 @@ void World::update(float dt) noexcept
     if (generate_logs)
     {
         logs_spawn_timer += dt;
-
-        if (logs_spawn_timer >= Settings::TIME_TO_SPAWN_LOGS)
+        
+        if (logs_spawn_timer >= time_to_spawn)
         {
             logs_spawn_timer = 0.f;
-            std::uniform_int_distribution<int> dist{-20, level};
+            update_time_to_spawn();
+            
+            std::uniform_int_distribution<int> dist{-level_limit, level_limit};
             float y = std::max(-Settings::LOG_HEIGHT + 10, std::min(last_log_y + dist(rng), Settings::VIRTUAL_HEIGHT + 90 - Settings::LOG_HEIGHT));
 
             last_log_y = y;
@@ -142,17 +143,32 @@ int World::get_score() const noexcept
     return score;
 }
 
-int World::get_level() const noexcept
+int World::get_level_limit() const noexcept
 {
-    return level;
+    return level_limit;
 }
 
-void World::set_level(int _level) noexcept
+void World::set_level_limit(int _limit) noexcept
 {
-    if (_level == 1)
-        level = 20;
-    else if (_level == 2)
-        level = 70;
-    else if (_level == 3)
-        level = 100;
+    level_limit = _limit + 20;
+    update_last_y();
 }
+
+void World::update_last_y() noexcept
+{
+    std::uniform_int_distribution<int> dist(0, 80 + level_limit);
+    last_log_y = -Settings::LOG_HEIGHT + dist(rng);
+}
+
+void World::set_aditional_time_to_spwan(float _aditional_time) noexcept
+{
+    aditional_time = _aditional_time;
+    update_time_to_spawn();
+}
+
+void World::update_time_to_spawn() noexcept
+{
+    std::uniform_real_distribution<float> dist_t{0, aditional_time};
+    time_to_spawn = Settings::TIME_TO_SPAWN_LOGS + dist_t(rng);
+}
+ 

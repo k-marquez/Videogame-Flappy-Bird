@@ -28,4 +28,6 @@ public:
     virtual ~HandleGameModeBase() {}
 
     virtual void handle_inputs(const sf::Event& event, std::shared_ptr<Bird> bird) noexcept {}
+    
+    virtual void config_world(std::shared_ptr<World> _world) {}
 };

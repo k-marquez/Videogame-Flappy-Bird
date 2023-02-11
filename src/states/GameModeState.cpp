@@ -28,7 +28,7 @@ GameModeState::GameModeState(StateMachine* sm) noexcept
 }
 void GameModeState::enter(std::shared_ptr<World> _world, std::shared_ptr<Bird> _bird, std::shared_ptr<HandleGameModeBase> _handler) noexcept
 {
-    world = std::make_shared<World>(false);
+    world = _world;
 }
 
 void GameModeState::handle_inputs(const sf::Event& event) noexcept
@@ -45,7 +45,6 @@ void GameModeState::handle_inputs(const sf::Event& event) noexcept
         opt2 = sf::Color::White;
         opt3 = sf::Color::White;
         select = "regular";
-        world->set_level(1);
     }
     else if (event.key.code == sf::Keyboard::Down && select == "regular" || event.key.code == sf::Keyboard::Up  && select == "super")
     {
@@ -54,7 +53,6 @@ void GameModeState::handle_inputs(const sf::Event& event) noexcept
         opt2 = sf::Color::Yellow;
         opt3 = sf::Color::White;
         select = "hard";
-        world->set_level(2);
     }
     else if (event.key.code == sf::Keyboard::Down && select == "hard")
     {
@@ -63,7 +61,6 @@ void GameModeState::handle_inputs(const sf::Event& event) noexcept
         opt2 = sf::Color::White;
         opt3 = sf::Color::Yellow;
         select = "hard";
-        world->set_level(3);
     }
 }
 

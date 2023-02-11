@@ -50,9 +50,18 @@ public:
 
     int get_score() const noexcept;
 
-    int get_level() const noexcept;
+    int get_level_limit() const noexcept;
 
-    void set_level(int) noexcept;
+    void set_level_limit(int _limit) noexcept;
+    
+    void set_aditional_time_to_spwan(float _aditional_time) noexcept;
+
+private:
+    
+    void update_last_y() noexcept;
+    
+    void update_time_to_spawn() noexcept;
+
 private:
     bool generate_logs;
 
@@ -70,7 +79,9 @@ private:
 
     float logs_spawn_timer{0.f};
     float last_log_y{0.f};
+    float aditional_time{0.f};
+    float time_to_spawn{0.f};
 
+    int level_limit;
     int score{0};
-    int level{20};
 };

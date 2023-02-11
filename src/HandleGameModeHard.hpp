@@ -26,4 +26,6 @@ public:
     HandleGameModeHard() noexcept;
 
     void handle_inputs(const sf::Event& event, std::shared_ptr<Bird> bird) noexcept override;
+    
+    void config_world(std::shared_ptr<World> _world) noexcept override;
 };
