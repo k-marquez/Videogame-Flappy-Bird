@@ -11,7 +11,7 @@
     Author: Lewis Ochoa
     lewis8a@gmail.com
 
-    This file contains the declaration of the class PauseState.
+    This file contains the declaration of the class GameOverState.
 */
 
 #pragma once
@@ -22,11 +22,11 @@
 #include <src/World.hpp>
 #include <src/states/BaseState.hpp>
 
-class PauseState: public BaseState
+class GameOverState: public BaseState
 {
 
 public:
-    PauseState(StateMachine* sm) noexcept;
+    GameOverState(StateMachine* sm) noexcept;
 
     void enter(std::shared_ptr<World> _world = nullptr, std::shared_ptr<Bird> _bird = nullptr, std::shared_ptr<HandleGameModeBase> _handler = nullptr) noexcept override;
 
@@ -37,7 +37,9 @@ public:
 private:
     std::shared_ptr<Bird> bird;
     std::shared_ptr<World> world;
-    
     sf::RectangleShape curtain;
     std::shared_ptr<HandleGameModeBase> handler;
+    sf::Color opt1;
+    sf::Color opt2;
+    std::string select;
 };

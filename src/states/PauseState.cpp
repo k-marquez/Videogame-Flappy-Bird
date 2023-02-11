@@ -2,13 +2,16 @@
     ISPPJ1 2023
     Study Case: Flappy Bird
 
+    Author: Alejandro Mujica
+    alejandro.j.mujic4@gmail.com
+
     Author: Kevin Márquez
     marquezberriosk@gmail.com
-
+    
     Author: Lewis Ochoa
     lewis8a@gmail.com
 
-    This file contains the definition of the class PauseBaseState.
+    This file contains the definition of the class PauseState.
 */
 #include <Settings.hpp>
 #include <src/text_utilities.hpp>
@@ -45,6 +48,6 @@ void PauseState::render(sf::RenderTarget& target) const noexcept
     
     target.draw(curtain);
     
-    render_text(target, Settings::VIRTUAL_WIDTH / 2, Settings::VIRTUAL_HEIGHT / 3, "PAUSE", Settings::HUGE_TEXT_SIZE, "flappy", sf::Color::White, true);
+    render_text(target, Settings::VIRTUAL_WIDTH / 2, Settings::VIRTUAL_HEIGHT / 3, "Pause", Settings::HUGE_TEXT_SIZE, "flappy", sf::Color::White, true);
     render_text(target, Settings::VIRTUAL_WIDTH / 2, 2 * Settings::VIRTUAL_HEIGHT / 3, "Press Space to resume", Settings::MEDIUM_TEXT_SIZE, "font", sf::Color::White, true);
 }

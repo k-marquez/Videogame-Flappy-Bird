@@ -5,6 +5,12 @@
     Author: Alejandro Mujica
     alejandro.j.mujic4@gmail.com
 
+    Author: Kevin Márquez
+    marquezberriosk@gmail.com
+    
+    Author: Lewis Ochoa
+    lewis8a@gmail.com
+
     This file contains the declaration of the class TitleScreenState.
 */
 
@@ -35,6 +41,6 @@ void TitleScreenState::update(float dt) noexcept
 void TitleScreenState::render(sf::RenderTarget& target) const noexcept 
 {
     world.render(target);
-    render_text(target, Settings::VIRTUAL_WIDTH / 2, Settings::VIRTUAL_HEIGHT / 3, "Flappy Bird", Settings::FLAPPY_TEXT_SIZE, "flappy", sf::Color::White, true);
+    render_text(target, Settings::VIRTUAL_WIDTH / 2, Settings::VIRTUAL_HEIGHT / 3, "Flappy Bird", Settings::HUGE_TEXT_SIZE, "flappy", sf::Color::White, true);
     render_text(target, Settings::VIRTUAL_WIDTH / 2, 2 * Settings::VIRTUAL_HEIGHT / 3, "Press Enter to start", Settings::MEDIUM_TEXT_SIZE, "font", sf::Color::White, true);
 }

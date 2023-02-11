@@ -1,3 +1,19 @@
+/*
+    ISPPJ1 2023
+    Study Case: Flappy Bird
+
+    Author: Alejandro Mujica
+    alejandro.j.mujic4@gmail.com
+
+    Author: Kevin Márquez
+    marquezberriosk@gmail.com
+    
+    Author: Lewis Ochoa
+    lewis8a@gmail.com
+
+    This file contains the declaration of the class Factory.
+*/
+
 #pragma once
 
 #include <list>

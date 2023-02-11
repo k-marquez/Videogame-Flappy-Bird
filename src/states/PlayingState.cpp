@@ -11,7 +11,7 @@
     Author: Lewis Ochoa
     lewis8a@gmail.com
 
-    This file contains the definition of the class PlayingBaseState.
+    This file contains the definition of the class PlayingState.
 */
 
 #include <Settings.hpp>
@@ -67,8 +67,8 @@ void PlayingState::update(float dt) noexcept
     {
         Settings::sounds["explosion"].play();
         Settings::sounds["hurt"].play();
-        bird->reset();
-        state_machine->change_state("count_down", nullptr, nullptr, handler);
+        Settings::music.pause();
+        state_machine->change_state("game_over", world, bird, handler);
     }
 
     if (world->update_scored(bird->get_collision_rect()))

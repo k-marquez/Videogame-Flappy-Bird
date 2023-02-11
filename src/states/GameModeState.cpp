@@ -2,8 +2,14 @@
     ISPPJ1 2023
     Study Case: Flappy Bird
 
+    Author: Alejandro Mujica
+    alejandro.j.mujic4@gmail.com
+
     Author: Kevin Márquez
     marquezberriosk@gmail.com
+    
+    Author: Lewis Ochoa
+    lewis8a@gmail.com
 
     This file contains the definition of the class GameModeState.
 */
@@ -31,7 +37,6 @@ void GameModeState::handle_inputs(const sf::Event& event) noexcept
     {
         opt1 = sf::Color::White;
         opt2 = sf::Color::Yellow;
-        
         select = "hard";
     }
     else if (event.key.code == sf::Keyboard::Up)
@@ -50,11 +55,9 @@ void GameModeState::update(float dt) noexcept
 void GameModeState::render(sf::RenderTarget& target) const noexcept 
 {
     world.render(target);
-    render_text(target, Settings::VIRTUAL_WIDTH / 2, Settings::VIRTUAL_HEIGHT / 4, "Select Game Mode", Settings::FLAPPY_TEXT_SIZE, "flappy", sf::Color::White, true);
-    
-    render_text(target, Settings::VIRTUAL_WIDTH / 2, 2.6 * Settings::VIRTUAL_HEIGHT / 3, "Press Enter to start", Settings::MEDIUM_TEXT_SIZE, "font", sf::Color::White, true);
-    
-    render_text(target, Settings::VIRTUAL_WIDTH / 2, 2.1 * Settings::VIRTUAL_HEIGHT / 3, "Regular", Settings::MEDIUM_TEXT_SIZE, "font", opt1, true);
-    
-    render_text(target, Settings::VIRTUAL_WIDTH / 2, 2.3 * Settings::VIRTUAL_HEIGHT / 3, "Hard", Settings::MEDIUM_TEXT_SIZE, "font", opt2, true);
+    render_text(target, Settings::VIRTUAL_WIDTH / 2, Settings::VIRTUAL_HEIGHT / 3, "Flappy Bird", Settings::HUGE_TEXT_SIZE, "flappy", sf::Color::White, true);
+    render_text(target, Settings::VIRTUAL_WIDTH / 2, 2.2 * Settings::VIRTUAL_HEIGHT / 4, "Select Game Mode", Settings::FLAPPY_TEXT_SIZE, "flappy", sf::Color::White, true);
+    render_text(target, Settings::VIRTUAL_WIDTH / 2, 2.0 * Settings::VIRTUAL_HEIGHT / 3, "Press Enter to start", Settings::MEDIUM_TEXT_SIZE, "font", sf::Color::White, true);
+    render_text(target, Settings::VIRTUAL_WIDTH / 2, 2.4 * Settings::VIRTUAL_HEIGHT / 3, "Regular", Settings::MEDIUM_TEXT_SIZE, "font", opt1, true);
+    render_text(target, Settings::VIRTUAL_WIDTH / 2, 2.6 * Settings::VIRTUAL_HEIGHT / 3, "Hard", Settings::MEDIUM_TEXT_SIZE, "font", opt2, true);
 }

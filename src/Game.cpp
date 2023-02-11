@@ -7,6 +7,9 @@
 
     Author: Kevin Márquez
     marquezberriosk@gmail.com
+    
+    Author: Lewis Ochoa
+    lewis8a@gmail.com
 
     This file contains the definition of the class Game.
 */
@@ -16,6 +19,7 @@
 #include <src/states/CountDownState.hpp>
 #include <src/states/TitleScreenState.hpp>
 #include <src/states/PauseState.hpp>
+#include <src/states/GameOverState.hpp>
 #include <src/states/PlayingState.hpp>
 #include <src/states/GameModeState.hpp>
 
@@ -28,6 +32,7 @@ Game::Game()
         {"count_down", [](StateMachine* sm) { return std::make_shared<CountDownState>(sm); }},
         {"playing", [](StateMachine* sm) { return std::make_shared<PlayingState>(sm); }},
         {"pause", [](StateMachine* sm) { return std::make_shared<PauseState>(sm); }},
+        {"game_over", [](StateMachine* sm) { return std::make_shared<GameOverState>(sm); }},
         {"game_mode", [](StateMachine* sm) { return std::make_shared<GameModeState>(sm); }},
       }
 {
