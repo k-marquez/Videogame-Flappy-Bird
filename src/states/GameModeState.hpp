@@ -26,6 +26,8 @@ class GameModeState: public BaseState
 public:
     GameModeState(StateMachine* sm) noexcept;
 
+    void enter(std::shared_ptr<World> _world = nullptr, std::shared_ptr<Bird> _bird = nullptr, std::shared_ptr<HandleGameModeBase> _handler = nullptr) noexcept override;
+
     void handle_inputs(const sf::Event& event) noexcept override;
 
     void update(float dt) noexcept override;
@@ -33,7 +35,7 @@ public:
     void render(sf::RenderTarget& target) const noexcept override;
 
 private:
-    World world;
+    std::shared_ptr<World> world;
     
     sf::Color opt1;
     sf::Color opt2;

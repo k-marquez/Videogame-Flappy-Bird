@@ -37,24 +37,29 @@ void GameOverState::handle_inputs(const sf::Event& event) noexcept
     {
         if(select == "quit")
         {
-             state_machine->change_state("title", nullptr, nullptr, handler);
+            Settings::sounds["return"].play();
+            state_machine->change_state("title", nullptr, nullptr, handler);
             Settings::music.play();
         }
         else if(select == "replay")
         {
             bird->reset();
-            state_machine->change_state("count_down", nullptr, nullptr, handler);
+            world->reset(false);
+            Settings::sounds["enter"].play();
+            state_machine->change_state("count_down", world, nullptr, handler);
             Settings::music.play();
         }
     }
-    else if (event.key.code == sf::Keyboard::Down)
+    else if (event.key.code == sf::Keyboard::Down && select != "quit")
     {
+        Settings::sounds["change"].play();
         opt1 = sf::Color::White;
         opt2 = sf::Color::Yellow;
         select = "quit";
     }
-    else if (event.key.code == sf::Keyboard::Up)
+    else if (event.key.code == sf::Keyboard::Up && select != "replay")
     {
+        Settings::sounds["change"].play();
         opt1 = sf::Color::Yellow;
         opt2 = sf::Color::White;
         select = "replay";

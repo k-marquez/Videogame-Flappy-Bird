@@ -30,7 +30,7 @@ CountDownState::CountDownState(StateMachine* sm) noexcept
 void CountDownState::enter(std::shared_ptr<World> _world, std::shared_ptr<Bird> _bird, std::shared_ptr<HandleGameModeBase> _handler) noexcept
 {
     handler_game_mode = _handler;
-    world = std::make_shared<World>(false);
+    world = _world;
 }
 
 void CountDownState::update(float dt) noexcept
@@ -41,7 +41,7 @@ void CountDownState::update(float dt) noexcept
     {
         timer = 0.f;
         --counter;
-
+        Settings::sounds["counter"].play();
         if (counter == 0)
         {
             state_machine->change_state("playing", world, nullptr,handler_game_mode);

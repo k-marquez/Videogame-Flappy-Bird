@@ -29,6 +29,7 @@ World::World(bool _generate_logs) noexcept
 
 void World::reset(bool _generate_logs) noexcept
 {
+    score = 0;
     generate_logs = _generate_logs;
 }
 
@@ -72,8 +73,7 @@ void World::update(float dt) noexcept
         if (logs_spawn_timer >= Settings::TIME_TO_SPAWN_LOGS)
         {
             logs_spawn_timer = 0.f;
-
-            std::uniform_int_distribution<int> dist{-20, 20};
+            std::uniform_int_distribution<int> dist{-20, level};
             float y = std::max(-Settings::LOG_HEIGHT + 10, std::min(last_log_y + dist(rng), Settings::VIRTUAL_HEIGHT + 90 - Settings::LOG_HEIGHT));
 
             last_log_y = y;
@@ -136,4 +136,19 @@ void World::increase_score() noexcept
 int World::get_score() const noexcept
 {
     return score;
+}
+
+int World::get_level() const noexcept
+{
+    return level;
+}
+
+void World::set_level(int _level) noexcept
+{
+    if (_level == 1)
+        level = 20;
+    else if (_level == 2)
+        level = 80;
+    else if (_level == 3)
+        level = 100;
 }

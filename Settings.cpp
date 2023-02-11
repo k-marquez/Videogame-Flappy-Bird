@@ -52,6 +52,20 @@ void Settings::load_textures()
 
     Settings::textures["bird"] = texture;
 
+     if (!texture.loadFromFile(Settings::GRAPHICS_PATH / "bird2.png"))
+    {
+        throw std::runtime_error{"Error loading texture graphics/bird2.png"};
+    }
+
+    Settings::textures["bird2"] = texture;
+
+     if (!texture.loadFromFile(Settings::GRAPHICS_PATH / "powerup.png"))
+    {
+        throw std::runtime_error{"Error loading texture graphics/powerup.png"};
+    }
+
+    Settings::textures["powerup"] = texture;
+
     if (!texture.loadFromFile(Settings::GRAPHICS_PATH / "background.png"))
     {
         throw std::runtime_error{"Error loading texture graphics/background.png"};
@@ -128,6 +142,66 @@ void Settings::load_sounds()
 
     sound.setBuffer(result.first->second);
     Settings::sounds["pause"] = sound;
+
+    if (!buffer.loadFromFile(Settings::SOUNDS_PATH / "change.wav"))
+    {
+        throw std::runtime_error{"Error loading sound sounds/change.wav"};
+    }
+
+    result = Settings::sound_buffers.emplace("change", buffer);
+
+    sound.setBuffer(result.first->second);
+    Settings::sounds["change"] = sound;
+
+    if (!buffer.loadFromFile(Settings::SOUNDS_PATH / "counter.wav"))
+    {
+        throw std::runtime_error{"Error loading sound sounds/counter.wav"};
+    }
+
+    result = Settings::sound_buffers.emplace("counter", buffer);
+
+    sound.setBuffer(result.first->second);
+    Settings::sounds["counter"] = sound;
+
+    if (!buffer.loadFromFile(Settings::SOUNDS_PATH / "return.wav"))
+    {
+        throw std::runtime_error{"Error loading sound sounds/return.wav"};
+    }
+
+    result = Settings::sound_buffers.emplace("return", buffer);
+
+    sound.setBuffer(result.first->second);
+    Settings::sounds["return"] = sound;
+
+    if (!buffer.loadFromFile(Settings::SOUNDS_PATH / "select.wav"))
+    {
+        throw std::runtime_error{"Error loading sound sounds/select.wav"};
+    }
+
+    result = Settings::sound_buffers.emplace("select", buffer);
+
+    sound.setBuffer(result.first->second);
+    Settings::sounds["select"] = sound;
+
+    if (!buffer.loadFromFile(Settings::SOUNDS_PATH / "powerup.wav"))
+    {
+        throw std::runtime_error{"Error loading sound sounds/powerup.wav"};
+    }
+
+    result = Settings::sound_buffers.emplace("powerup", buffer);
+
+    sound.setBuffer(result.first->second);
+    Settings::sounds["powerup"] = sound;
+
+    if (!buffer.loadFromFile(Settings::SOUNDS_PATH / "powerdown.wav"))
+    {
+        throw std::runtime_error{"Error loading sound sounds/powerdown.wav"};
+    }
+
+    result = Settings::sound_buffers.emplace("powerdown", buffer);
+
+    sound.setBuffer(result.first->second);
+    Settings::sounds["powerdown"] = sound;
 
     if (!Settings::music.openFromFile(Settings::SOUNDS_PATH / "marios_way.ogg"))
     {

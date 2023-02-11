@@ -38,13 +38,12 @@ void Bird::jump() noexcept
     }
 }
 
-
 void Bird::move_to_left() noexcept
 {
     if (move_direction != -1.f)
     {
         move_direction = -1.f;
-        stop_time = 0.3;
+        stop_time = 0.25;
     }
 }
     
@@ -53,10 +52,9 @@ void Bird::move_to_right() noexcept
     if (move_direction != 1.f)
     {
         move_direction = 1.f;
-        stop_time = 0.3;
+        stop_time = 0.25;
     }
 }
-
 
 void Bird::update(float dt) noexcept
 {

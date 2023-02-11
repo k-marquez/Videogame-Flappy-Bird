@@ -47,6 +47,10 @@ public:
     void increase_score() noexcept;
 
     int get_score() const noexcept;
+
+    int get_level() const noexcept;
+
+    void set_level(int) noexcept;
 private:
     bool generate_logs;
 
@@ -66,4 +70,5 @@ private:
     float last_log_y{0.f};
 
     int score{0};
+    int level{20};
 };
