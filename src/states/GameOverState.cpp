@@ -45,6 +45,7 @@ void GameOverState::handle_inputs(const sf::Event& event) noexcept
         {
             bird->reset();
             world->reset(false);
+            world->resetScore();
             Settings::sounds["enter"].play();
             state_machine->change_state("count_down", world, nullptr, handler);
             Settings::music.play();
