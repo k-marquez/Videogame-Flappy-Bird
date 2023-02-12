@@ -39,8 +39,11 @@ public:
 private:
     float x;
     float y;
+    float ty;
+    float by;
     Log top;
     Log bottom;
-
+    bool close{false};
     bool scored{false};
+    bool first{true};
 };

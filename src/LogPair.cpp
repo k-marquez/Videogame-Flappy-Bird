@@ -16,6 +16,7 @@
 
 #include <Settings.hpp>
 #include <src/LogPair.hpp>
+#include <iostream>
 
 LogPair::LogPair(float _x, float _y) noexcept
     : x{_x}, y{_y},
@@ -32,10 +33,27 @@ bool LogPair::collides(const sf::FloatRect& rect) const noexcept
 
 void LogPair::update(float dt) noexcept
 {
-    x += -Settings::MAIN_SCROLL_SPEED * dt;
+    float y2{top.getY()};
+    if(first)
+    {
+        ty = top.getY();
+        by = bottom.getY();
+        first = false;
+    }
 
-    top.update(x);
-    bottom.update(x);
+    if(top.getY() < by && close == false)
+        y2 = top.getY() + (Settings::MAIN_SCROLL_SPEED/2) * dt;
+    else
+    {
+        close = true;
+        if(top.getY() > ty)
+            y2 = top.getY() - (Settings::MAIN_SCROLL_SPEED/2) * dt;
+        else
+            close = false;
+    }
+    x += -Settings::MAIN_SCROLL_SPEED * dt;
+    top.update(x,y2);
+    bottom.update(x,bottom.getY());
 }
 
 void LogPair::render(sf::RenderTarget& target) const noexcept
