@@ -85,7 +85,7 @@ void PlayingState::render(sf::RenderTarget& target) const noexcept
     bird->render(target);
     render_text(target, 20, 10, "Score: " + std::to_string(world->get_score()), Settings::FLAPPY_TEXT_SIZE, "flappy", sf::Color::White);
     render_text(target, Settings::VIRTUAL_WIDTH - Settings::VIRTUAL_WIDTH / 3, 10, "Press Space to Pause", Settings::LOW_TEXT_SIZE, "font", sf::Color::White, false);
-    if(world->get_level_limit() < 20)
+    if(world->get_level_limit() > 40)
     {
         render_text(target, Settings::VIRTUAL_WIDTH - Settings::VIRTUAL_WIDTH / 3, 25, "Press A or B to move", Settings::LOW_TEXT_SIZE, "font", sf::Color::White, false);
     }

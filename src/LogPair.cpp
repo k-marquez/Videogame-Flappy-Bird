@@ -36,25 +36,32 @@ void LogPair::update(float dt) noexcept
     if(level>40)
     {
         float y2{top.getY()};
+        float y3{bottom.getY()};
         if(first)
         {
             ty = top.getY();
             by = bottom.getY();
             first = false;
         }
-        if(top.getY() < by && close == false)
-            y2 = top.getY() + (Settings::MAIN_SCROLL_SPEED/2) * dt;
+        if(top.getY() < bottom.getY() && close == false)
+        {
+            y2 = top.getY() + (Settings::MAIN_SCROLL_SPEED/3) * dt;
+            y3 = bottom.getY() - (Settings::MAIN_SCROLL_SPEED/3) * dt;
+        }
         else
         {
             close = true;
             if(top.getY() > ty)
-                y2 = top.getY() - (Settings::MAIN_SCROLL_SPEED/2) * dt;
+            {
+                y2 = top.getY() - (Settings::MAIN_SCROLL_SPEED/3) * dt;
+                y3 = bottom.getY() + (Settings::MAIN_SCROLL_SPEED/3) * dt;
+            }
             else
                 close = false;
         }
         x += -Settings::MAIN_SCROLL_SPEED * dt;
         top.update(x,y2);
-        bottom.update(x,bottom.getY());
+        bottom.update(x,y3);
     }
     else
     {
