@@ -44,5 +44,10 @@ void HandleGameModeHard::config_world(std::shared_ptr<World> _world) noexcept
     _world->resetScore();
     
     _world->set_level_limit(40);
-    _world->set_aditional_time_to_spwan(0.5f);    
-};
+    _world->set_aditional_time_to_spwan(0.5f);
+}
+
+void HandleGameModeHard::config_powerup(float &_probability) noexcept
+{
+    _probability = 0.03f;
+}

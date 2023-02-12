@@ -4,7 +4,7 @@ INCLUDE = -I.
 
 BUILD_DIR = build
 
-OBJ_RULES = text_utilities.o Settings.o Game.o Bird.o Log.o LogPair.o World.o StateMachine.o TitleScreenState.o CountDownState.o PlayingState.o PauseState.o GameOverState.o HandlerHard.o HandlerRegular.o GameModeState.o
+OBJ_RULES = text_utilities.o Settings.o Game.o Bird.o Log.o LogPair.o World.o StateMachine.o TitleScreenState.o CountDownState.o PlayingState.o PauseState.o GameOverState.o HandlerHard.o HandlerRegular.o GameModeState.o Powerup.o
 
 LIBS = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system $(BUILD_DIR)/*.o
 
@@ -30,6 +30,9 @@ Log.o: $(BUILD_DIR) src/Log.hpp src/Log.cpp
 
 LogPair.o: $(BUILD_DIR) src/LogPair.hpp src/LogPair.cpp
 	$(CXX) -c $(INCLUDE) src/LogPair.cpp -o $(BUILD_DIR)/$@
+
+Powerup.o: $(BUILD_DIR) src/Powerup.hpp src/Powerup.cpp
+	$(CXX) -c $(INCLUDE) src/Powerup.cpp -o $(BUILD_DIR)/$@
 
 HandlerHard.o: $(BUILD_DIR) src/HandleGameModeHard.hpp src/HandleGameModeHard.cpp
 	$(CXX) -c $(INCLUDE) src/HandleGameModeHard.cpp -o $(BUILD_DIR)/$@

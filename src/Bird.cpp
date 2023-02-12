@@ -95,3 +95,10 @@ void Bird::reset() noexcept
     vx = 0.f;
     stop_time = 0.f;
 }
+
+void Bird::set_sprite(sf::Texture _texture, float _w, float _h) noexcept
+{
+    sprite.setTexture(_texture);
+    width = _w;
+    height = _h;   
+}

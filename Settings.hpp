@@ -40,6 +40,8 @@ struct Settings
     static constexpr float LOG_WIDTH{70.f};
     static constexpr float LOG_HEIGHT{288.f};
     static constexpr float LOGS_GAP{90.f};
+    static constexpr float POWERUP_WIDTH{27.f};
+    static constexpr float POWERUP_HEIGHT{30.f};
     static constexpr float GROUND_HEIGHT{16.f};
     static constexpr float BACKGROUND_LOOPING_POINT{1157.f};
     static constexpr float MAIN_SCROLL_SPEED{100.f};

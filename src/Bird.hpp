@@ -40,6 +40,8 @@ public:
     void render(sf::RenderTarget& target) const noexcept;
     
     void reset() noexcept;
+    
+    void set_sprite(sf::Texture _texture, float _w, float _y) noexcept;
 
 private:
     float x;

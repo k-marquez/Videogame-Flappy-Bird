@@ -20,6 +20,7 @@
 
 #include <src/Bird.hpp>
 #include <src/HandleGameMode.hpp>
+#include <src/Powerup.hpp>
 #include <src/World.hpp>
 #include <src/states/BaseState.hpp>
 
@@ -42,4 +43,9 @@ private:
     std::shared_ptr<World> world;
     
     std::shared_ptr<HandleGameModeBase> handler;
+    
+    std::shared_ptr<Powerup> powerup;
+    float probability_powerups{0.f};
+
+    std::mt19937 rng;
 };
