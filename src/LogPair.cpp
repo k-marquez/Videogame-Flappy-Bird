@@ -16,9 +16,10 @@
 
 #include <Settings.hpp>
 #include <src/LogPair.hpp>
+#include <iostream>
 
-LogPair::LogPair(float _x, float _y) noexcept
-    : x{_x}, y{_y},
+LogPair::LogPair(float _x, float _y, int _level) noexcept
+    : x{_x}, y{_y}, level{_level},
       top{x, y + Settings::LOG_HEIGHT, true},
       bottom{x, y + Settings::LOGS_GAP + Settings::LOG_HEIGHT, false}
 {
@@ -32,10 +33,43 @@ bool LogPair::collides(const sf::FloatRect& rect) const noexcept
 
 void LogPair::update(float dt) noexcept
 {
-    x += -Settings::MAIN_SCROLL_SPEED * dt;
-
-    top.update(x);
-    bottom.update(x);
+    if(level>40)
+    {
+        float y2{top.getY()};
+        float y3{bottom.getY()};
+        if(first)
+        {
+            ty = top.getY();
+            by = bottom.getY();
+            first = false;
+        }
+        if(top.getY() < bottom.getY() && close == false)
+        {
+            y2 = top.getY() + (Settings::MAIN_SCROLL_SPEED/3) * dt;
+            y3 = bottom.getY() - (Settings::MAIN_SCROLL_SPEED/3) * dt;
+        }
+        else
+        {
+            close = true;
+            if(top.getY() > ty)
+            {
+                y2 = top.getY() - (Settings::MAIN_SCROLL_SPEED/3) * dt;
+                y3 = bottom.getY() + (Settings::MAIN_SCROLL_SPEED/3) * dt;
+            }
+            else
+                close = false;
+        }
+        x += -Settings::MAIN_SCROLL_SPEED * dt;
+        top.update(x,y2);
+        bottom.update(x,y3);
+    }
+    else
+    {
+        x += -Settings::MAIN_SCROLL_SPEED * dt;
+        top.update(x,top.getY());
+        bottom.update(x,bottom.getY());
+    }
+    
 }
 
 void LogPair::render(sf::RenderTarget& target) const noexcept
