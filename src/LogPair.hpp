@@ -22,7 +22,7 @@
 class LogPair
 {
 public:
-    LogPair(float _x, float _y) noexcept;
+    LogPair(float _x, float _y, int _level) noexcept;
 
     bool collides(const sf::FloatRect& rect) const noexcept;
 
@@ -46,4 +46,5 @@ private:
     bool close{false};
     bool scored{false};
     bool first{true};
+    int level;
 };

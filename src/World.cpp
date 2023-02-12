@@ -83,7 +83,7 @@ void World::update(float dt) noexcept
 
             last_log_y = y;
 
-            logs.push_back(log_factory.create(Settings::VIRTUAL_WIDTH, y));
+            logs.push_back(log_factory.create(Settings::VIRTUAL_WIDTH, y,level_limit));
         }
     }
 
