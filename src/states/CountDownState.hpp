@@ -36,6 +36,6 @@ private:
     
     std::shared_ptr<HandleGameModeBase> handler_game_mode;
     
-    int counter{5};
+    int counter{6};
     float timer{0.f};
 };

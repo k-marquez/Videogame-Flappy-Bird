@@ -34,6 +34,8 @@ std::unordered_map<std::string, sf::Font> Settings::fonts{};
 
 sf::Music Settings::music{};
 
+sf::Music Settings::music2{};
+
 void Settings::init()
 {
     Settings::load_textures();
@@ -203,9 +205,24 @@ void Settings::load_sounds()
     sound.setBuffer(result.first->second);
     Settings::sounds["powerdown"] = sound;
 
+    if (!buffer.loadFromFile(Settings::SOUNDS_PATH / "impact.wav"))
+    {
+        throw std::runtime_error{"Error loading sound sounds/impact.wav"};
+    }
+
+    result = Settings::sound_buffers.emplace("impact", buffer);
+
+    sound.setBuffer(result.first->second);
+    Settings::sounds["impact"] = sound;
+
     if (!Settings::music.openFromFile(Settings::SOUNDS_PATH / "marios_way.ogg"))
     {
         throw std::runtime_error{"Error loading music sounds/marios_way.ogg"};
+    }
+
+    if (!Settings::music2.openFromFile(Settings::SOUNDS_PATH / "jump_run_duck.ogg"))
+    {
+        throw std::runtime_error{"Error loading music sounds/jump_run_duck.ogg"};
     }
 }
 

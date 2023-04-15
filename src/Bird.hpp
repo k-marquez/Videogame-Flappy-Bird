@@ -41,7 +41,9 @@ public:
     
     void reset() noexcept;
     
-    void set_sprite(sf::Texture _texture, float _w, float _y) noexcept;
+    void set_sprite(bool, float _w, float _y) noexcept;
+
+    bool get_mode() const noexcept;
 
 private:
     float x;
@@ -53,5 +55,6 @@ private:
     float stop_time;
     sf::Sprite sprite;
     bool jumping{false};
+    bool mode{false};
     int move_direction{0}; 
 };

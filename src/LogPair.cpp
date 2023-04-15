@@ -51,13 +51,21 @@ void LogPair::update(float dt) noexcept
         else
         {
             close = true;
+            if(!impact)
+            {
+                Settings::sounds["impact"].play();
+                impact = true;
+            }
             if(top.getY() > ty)
             {
                 y2 = top.getY() - (Settings::MAIN_SCROLL_SPEED/3) * dt;
                 y3 = bottom.getY() + (Settings::MAIN_SCROLL_SPEED/3) * dt;
             }
             else
+            {
                 close = false;
+                impact = false;
+            }
         }
         x += -Settings::MAIN_SCROLL_SPEED * dt;
         top.update(x,y2);

@@ -36,6 +36,8 @@ public:
     bool is_out_of_game() const noexcept;
     
     bool is_active() const noexcept;
+
+    int get_time() const noexcept;
     
     bool collides(const sf::FloatRect& rect) const noexcept;
 

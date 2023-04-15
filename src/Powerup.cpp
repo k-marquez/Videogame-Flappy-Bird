@@ -19,7 +19,7 @@
 
 Powerup::Powerup(float _x, float _y) noexcept
     : x{_x}, y{_y}, taked{false}, sprite{Settings::textures["powerup"]},
-      active_time{5.f}
+      active_time{Settings::TIME_POWERUP}
 {
 }
 
@@ -30,20 +30,18 @@ sf::FloatRect Powerup::get_collision_rect() const noexcept
 
 void Powerup::update(float dt) noexcept
 {
-    if (not taked)
-    {
-        x += -5.f;
-        sprite.setPosition(x, y);
-    }
-    
     if(taked)
     {
         active_time -= dt;
-        
         if (active_time <= 0)
         {
             taked = false;   
         }
+    }
+    else
+    {
+        x += Settings::GRAVITY / 10 * -dt;
+        sprite.setPosition(x, y);
     }
 }
 
@@ -55,6 +53,11 @@ void Powerup::take_powerup() noexcept
 bool Powerup::is_active() const noexcept
 {
     return taked;
+}
+
+int Powerup::get_time() const noexcept
+{
+    return active_time;
 }
 
 void Powerup::reset(float _x, float _y) noexcept
@@ -71,11 +74,10 @@ void Powerup::render(sf::RenderTarget& target) const noexcept
 
 bool Powerup::is_out_of_game() const noexcept
 {
-    return x < -Settings::POWERUP_WIDTH;
+    return x < - Settings::POWERUP_WIDTH;
 }
 
 bool Powerup::collides(const sf::FloatRect& rect) const noexcept
 {
     return get_collision_rect().intersects(rect);
 }
-

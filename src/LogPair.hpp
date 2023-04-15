@@ -44,6 +44,7 @@ private:
     Log top;
     Log bottom;
     bool close{false};
+    bool impact{false};
     bool scored{false};
     bool first{true};
     int level;

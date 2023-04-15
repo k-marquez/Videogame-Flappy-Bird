@@ -43,7 +43,7 @@ void Bird::move_to_left() noexcept
     if (move_direction != -1.f)
     {
         move_direction = -1.f;
-        stop_time = 0.25;
+        stop_time = 0.35;
     }
 }
     
@@ -52,7 +52,7 @@ void Bird::move_to_right() noexcept
     if (move_direction != 1.f)
     {
         move_direction = 1.f;
-        stop_time = 0.25;
+        stop_time = 0.35;
     }
 }
 
@@ -96,9 +96,23 @@ void Bird::reset() noexcept
     stop_time = 0.f;
 }
 
-void Bird::set_sprite(sf::Texture _texture, float _w, float _h) noexcept
+void Bird::set_sprite(bool bird, float _w, float _h) noexcept
 {
-    sprite.setTexture(_texture);
+    if(bird)
+    {
+        sprite.setTexture(Settings::textures["bird2"]);
+        mode = true;
+    }
+    else
+    {
+        sprite.setTexture(Settings::textures["bird"]);
+        mode = false;
+    }
     width = _w;
     height = _h;   
+}
+
+bool Bird::get_mode() const noexcept
+{
+    return mode;
 }

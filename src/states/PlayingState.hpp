@@ -45,7 +45,7 @@ private:
     std::shared_ptr<HandleGameModeBase> handler;
     
     std::shared_ptr<Powerup> powerup;
-    float probability_powerups{0.f};
+    float probability_powerups{Settings::PROBABILITY};
 
     std::mt19937 rng;
 };

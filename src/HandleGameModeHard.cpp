@@ -48,5 +48,5 @@ void HandleGameModeHard::config_world(std::shared_ptr<World> _world) noexcept
 
 void HandleGameModeHard::config_powerup(float &_probability) noexcept
 {
-    _probability = 0.03f;
+    _probability = _probability;
 }
